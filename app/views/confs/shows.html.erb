@@ -1,0 +1,19 @@
+<div class="col-md-6">
+	<div class="form-group" style="margin-top: 20px;margin-bottom: 20px;">
+	  <label for="comment">Submit_solution:</label>
+	  <textarea id="answer" class="form-control" rows="5" id="comment"></textarea>
+	  <button type="button" class="btn btn-info" id="button-answer">Хариу илгээх</button>
+	</div>
+</div>
+<div class="col-md-6">
+</div>
+<%= form_for @shows do |f| -%>
+<%= f.text_field(:title, {:class => 'form-control col-md-6 col-xs-12',:id => 'id1'})%> </br>
+<%= f.submit({:class => 'btn btn-primary val'})%>
+<%= end %>
+<script>
+	$( "#button-answer" ).click(function() {
+  console.log($("#answer").val());
+  var x = $("#answer").val();
+});
+</script>

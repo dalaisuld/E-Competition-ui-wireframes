@@ -1,0 +1,86 @@
+<style type="text/css">
+.col-md-3
+{
+	margin-top: 10px;
+	margin-bottom:10px;
+}
+</style>
+<%= form_for @conf do |f| -%>
+<% if @conf.errors.any? %>
+<%= @conf.errors.each do |attr,msg| %>
+<ul style="color:red">
+<h3>Алдаа</h3>	
+<p><%=attr%> талбарыг оруулна уу !!!</li></p>
+</ul>
+<% end %>
+<% end %>
+<div class="col-md-12">
+<div class="col-md-3">
+Title:
+</div>
+<div class="col-md-3">
+<%= f.text_field(:title, {:class => 'form-control col-md-6 col-xs-12',:id => 'id1'})%> </br>
+</div>
+<p id = "demo1"></p>
+</div>
+<div class="col-md-12">
+<div class="col-md-3">
+Image:
+</div>
+<p id = "demo2"></p>
+<div class="col-md-3">
+<input type="file" style="width:200px">
+</div>
+</div>
+<div class="col-md-12">
+<div class="col-md-3">
+Deadline:
+</div>
+<div class="col-md-3">
+
+</div>
+<p id = "demo2"></p>
+</div>
+<div class="col-md-12">
+<div class="col-md-3">
+Max.participant number:
+</div>
+<div class="col-md-3">
+<%= f.text_field(:max, {:class => 'form-control col-md-6 col-xs-12'})%> </br>
+</div>
+<p id = "demo3"></p>
+</div> 
+<div class="col-md-12">
+<div class="col-md-3">
+Description:
+</div>
+<div class="col-md-3">
+<%= f.text_area(:descreption, {:class => 'form-control col-md-6 col-xs-12'})%> </br>
+</div>
+<p id = "demo4"></p>
+</div> 
+<div class="col-md-12">
+<div class="col-md-3">
+Evaluation:
+</div>
+<div class="col-md-3">
+<%= f.text_area(:evaluation, {:class => 'form-control col-md-6 col-xs-12'})%> </br>
+</div>
+</div> 
+<div class="col-md-12">
+<div class="col-md-3">
+</div>
+<div class="col-md-3">
+<%= f.submit({:class => 'btn btn-primary val'})%>
+</div>
+</div> 
+<% end -%>
+<p>Test cases:</p>
+<script type="text/javascript">
+$( ".val" ).onClick(function() {
+var inpObj = document.getElementById("id1");
+    if (!inpObj.checkValidity()) {
+        document.getElementById("demo1").innerHTML = "xaxa";
+    } 
+});
+</script>

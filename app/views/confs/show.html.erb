@@ -1,0 +1,78 @@
+<% if user_signed_in? %>
+<% if current_user.admin?%>
+<h4>Та админ учир тэмцээнд орох боломжгүй</h4>
+<h4><%=@conf.title%></h4>
+<h4>Дэс дугаар <%=@conf.id%></h4>
+<table class="table">                         
+  <tr>
+    <th>Хэрэглэгчийн нэр</th>                          
+    <th>Хийсн ажлын нэр</th>
+    <th>Хийсн ажлын дэс дугаар</th>
+    <th>show details</th>
+  </tr>
+<% @shows.each do |show| %>       
+  <tr>
+    <td><%= show.name %></td>  
+    <td><%= show.title %></td> 
+    <td><%= show.conf_id %></td> 
+    <th>Хийсн ажлын дэс дугаар</th>
+  </tr>
+<% end %>                       
+</table> 
+<% else %>
+<div class="text-center">
+	<h1><%= @conf.title%></h1>
+</div>
+<div class="col-md-12" id="header1">
+<div class="col-md-3 col-xs-3 col-sm-3">
+	<div  style="width:300px; margin: 0 auto;padding-top: 10px;padding-bottom: 10px;position: relative;">
+        <%= image_tag('download.png')%>       
+    </div>
+</div>
+<div class="col-md-9 col-xs-9 col-sm-9"> 
+<p>Created date: <%=@conf.created_at%></p>
+<p>Participants: <%= @conf.id %></p>
+<p>Description: <%= @conf.descreption %></p>
+<p>Evaluation mode: <%= @conf.evaluation %></p>
+</div>
+<style type="text/css">
+	main
+	{
+		height: 400px !important;
+	}
+</style>
+<div class="col-xs-offset-3 col-sm-9 col-md-9 col-lg-9">
+<a href="/confs/2/shows">
+<button id="button1" class="btn btn-primary pull-right">Join this competition</button>
+</a>
+<button id="button3" class="btn btn-primary" style="margin-right:10px;">Буцах</button>
+<button id="button" class="btn btn-primary">Шалгах</button>
+<%= button_to 'Press me', button_path, method: :get %>
+</div>
+<script type="text/javascript">
+	
+	jQuery( "#button1" ).click(function() {
+		jQuery("#header2").css("display","");
+		jQuery("#header1").css("display","none");
+		console.log("xaxa");
+		
+});
+	jQuery( "#button3" ).click(function() {
+		jQuery("#header2").css("display","none");
+		jQuery("#header1").css("display","");
+		console.log("xexe");;
+// 	jQuery( "#button" ).click(function() {
+// 		if($( "#input" ).val()== x )
+// 		{
+// 			alert('Хариулт зөв байна');
+
+// 		}
+// 		else
+// 		{
+// 			alert('Хариулт буруу байна');
+// 		}
+// });	
+});
+</script>
+<% end %>
+<% end %>

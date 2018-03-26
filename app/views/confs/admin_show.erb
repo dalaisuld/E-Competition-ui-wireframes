@@ -1,0 +1,17 @@
+<h1>Энэ бол админы харах хэсэг</h1>
+<table class="table">                         
+  <tr>
+    <th>Хэрэглэгчийн нэр</th>                          
+    <th>Хийсн ажлын нэр</th>
+    <th>Хийсн ажлын дэс дугаар</th>
+    <th>show details</th>
+  </tr>
+<% @shows.each do |show| %>       
+  <tr>
+    <td><%= show.name %></td>  
+    <td><%= show.title %></td> 
+    <td><%= show.conf_id %></td> 
+    <th>show details</th>
+  </tr>
+<% end %>                       
+</table> 

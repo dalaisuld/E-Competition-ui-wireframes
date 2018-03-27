@@ -15,7 +15,7 @@
     <td><%= show.name %></td>  
     <td><%= show.title %></td> 
     <td><%= show.conf_id %></td> 
-    <th>Хийсн ажлын дэс дугаар</th>
+    <th><a href="/confs/<%=@conf.id%>">Хийсн ажлын дэс дугаар</a></th>
   </tr>
 <% end %>                       
 </table> 
@@ -35,6 +35,7 @@
 <p>Description: <%= @conf.descreption %></p>
 <p>Evaluation mode: <%= @conf.evaluation %></p>
 </div>
+<input type="text">
 <style type="text/css">
 	main
 	{
@@ -45,22 +46,20 @@
 <a href="/confs/2/shows">
 <button id="button1" class="btn btn-primary pull-right">Join this competition</button>
 </a>
-<button id="button3" class="btn btn-primary" style="margin-right:10px;">Буцах</button>
-<button id="button" class="btn btn-primary">Шалгах</button>
-<%= button_to 'Press me', button_path, method: :get %>
+<textarea id="button10" rows="4" cols="50"></textarea>
+<button id="send" class="btn btn-primary">Илгээх</button>
 </div>
 <script type="text/javascript">
-	
+console.log(jQuery("#button10").val());
 	jQuery( "#button1" ).click(function() {
 		jQuery("#header2").css("display","");
 		jQuery("#header1").css("display","none");
 		console.log("xaxa");
-		
 });
 	jQuery( "#button3" ).click(function() {
 		jQuery("#header2").css("display","none");
 		jQuery("#header1").css("display","");
-		console.log("xexe");;
+		console.log("xexe");
 // 	jQuery( "#button" ).click(function() {
 // 		if($( "#input" ).val()== x )
 // 		{

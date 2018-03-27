@@ -3,22 +3,19 @@ class ConfsController < ApplicationController
   helper_method :sort_direction
   def show
     @conf = Conf.find(params[:id])
-    @shows = Conf.joins(:confs_users,:users).select("confs_users.conf_id,users.name,confs.title").where(:confs => {:id => @conf.id}).group("users.name")
-  #   sql = "Insert into confs_users (conf_id,user_id,answer) values(#{@conf.id},#{current_user.id},13)";
-  #   records_array = ActiveRecord::Base.connection.execute(sql)
-  end
-  def button
-     sql = "Insert into confs_users (conf_id,user_id,answer) values(#{@conf.id},#{current_user.id},13)";
-     records_array = ActiveRecord::Base.connection.execute(sql)
+    sql = "Insert into confs_users (conf_id,user_id,answer) values(#{@conf.id},#{current_user.id},30)"
+    records_array = ActiveRecord::Base.connection.execute(sql)
+    if user_signed_in?
+      if current_user.admin?
+        @shows = Conf.joins(:confs_users,:users).select("confs_users.conf_id,users.name,confs.title").where(:confs => {:id => @conf.id}).group("users.name")
+      end
+      else
+      #render plain: params[:conf].inspect
+      #@conf = params[:title]
+      end
   end
   def new
-    @conf = Conf.new
-  end
-  def shows
-    answer = ''
-    sql = "Insert into confs_users (conf_id,user_id,answer) values(7,#{current_user.id},17)";
-    records_array = ActiveRecord::Base.connection.execute(sql)
-    @conf = Conf.all
+    @conf = Conf.new()
   end
   def admin_show
     @shows = Conf.joins(:confs_users,:users).select("confs_users.conf_id,users.name,confs.title").where(:confs => {:id => 10}).group("users.name")
